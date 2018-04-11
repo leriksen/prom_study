@@ -61,4 +61,7 @@ typings/
 .next
 
 # ide
-.idea
+.idea/
+
+# generated from coffeescript
+js/
