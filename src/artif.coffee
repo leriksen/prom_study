@@ -1,6 +1,7 @@
 request = require 'request-promise'
 merge = require 'merge'
 commandLineArgs = require 'command-line-args'
+config = require './config'
 
 optionDefinitions = [
   name: 'repo'
@@ -63,11 +64,11 @@ options =
     resolveWithFullResponse: true
     simple: false
     headers:
-      'X-JFrog-Art-Api': "os.env.ARTIFACTORY_API_KEY"
+      'X-JFrog-Art-Api': "os.env.#{config.baseAPIKey}"
 
 # add support for dev and test envs at some point
 
-baseURL = "https://github.aus.thenational.com/api/"
+baseURL = config.loadConfig("test").baseURL
 
 pingEndpoint = baseURL + "system/ping"
 repoEndpoint = baseURL + "repositories/"
